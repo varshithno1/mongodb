@@ -2,11 +2,14 @@ const express = require("express");
 const mongoose = require("mongoose");
 const fs = require('fs');
 const Users = require("./src/schemas/usersSchema");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const app = express();
-const port = 7070;
+const port = process.env.PORT;
 
-mongoose.connect(process.env.mongoose)
+mongoose.connect(process.env.MONGOOSE);
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error: "));
